@@ -11,21 +11,20 @@ However it only fixes `docker`, not `docker compose`.
 ## works
 
 ```sh
-docker run --rm -it -h docker ubuntu
-root@docker:/# apt update -qq
-root@docker:/# apt install -yqq wget
-root@docker:/# wget https://github.com
+docker run --rm ubuntu /bin/bash -c \
+  "apt update -qq && apt install -yqq wget && wget -O- https://github.com"
 ```
 
 ## fails
 
 
 ```yml
+# docker-compose.yml
 services:
   test:
     image: ubuntu
     command:
-    - /bin/sh
+    - /bin/bash
     - -c
     - apt update -qq && apt install -yqq wget && wget -O- https://github.com
 ```

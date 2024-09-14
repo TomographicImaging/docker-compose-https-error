@@ -1,13 +1,7 @@
 services:
   test-alpine:
     image: alpine
-    command:
-    - /bin/sh
-    - -c
-    - apk update -q && apk add wget && wget -O- https://github.com
+    command: [/bin/sh, -c, apk update -q && apk add wget && wget -O- https://github.com]
   test-ubuntu:
     image: ubuntu
-    command:
-    - /bin/sh
-    - -c
-    - apt update -qq && apt install -yqq wget && wget -O- https://github.com
+    command: [/bin/bash, -c, apt update -qq && apt install -yqq wget && wget -O- https://github.com]
